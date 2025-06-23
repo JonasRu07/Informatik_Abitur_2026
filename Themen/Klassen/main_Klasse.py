@@ -1,12 +1,6 @@
-
-
-
-
-
-
-
-
-
+from basis_klasse import Person
+from erb_klasse import Student
+from private_attribute import Teacher
 
 # Person wird mithilfe des Klassennames erstellt
 person_1 = Person('Marcel', 'Schuetz')
@@ -30,7 +24,7 @@ teacher_1 = Teacher('Patrick', 'Haag', 'math')
 try:
     print(teacher_1.__subject)
 except AttributeError:
-    print('Kein passendes Attribut für Teacher.__subject gefunden')
+    print('Kein passendes Attribut für teacher_1.__subject gefunden')
 
 # Die Klasse kann aber auf private Atttribute zugreiffen
 teacher_1.greet_class()

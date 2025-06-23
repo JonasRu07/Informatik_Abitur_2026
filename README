@@ -2,28 +2,28 @@ In diesem Repository befinden sich die Themen, welche wir bis zum Abitur 2026 in
 
 Themen:
 
-    - Listen
-    - Programmierung eines Bonsei-Modellrechners
-    - Klassen
-        - Basis Klassen
-        - Private / Öffentlich
-        - Vererbung
-        - Referenzattribuite
-        - Haben / Kennt Beziehungen
-    - MVC-Pattern
-    - Tests
-    - Automaten
-    - Regulaere Ausdruecke
-    - Funktionale Programmierung in Python
-    - Standart Algorithmen
-        - Suchalgorithmen
-        - Sortieralgorithmen
-        - Graphen
-    - Kommunikation
-        - RS-232 Schnittstelle
-        - Fehlererkennung
-    - Kryptologie
-        - Langzeit Projekt: Cryptool
+    - O Listen
+    - O Programmierung eines Bonsei-Modellrechners
+    - X Klassen
+        - X Basis Klassen
+        - X Private / Öffentlich
+        - X Vererbung
+        - X Referenzattribuite
+        - X Haben / Kennt Beziehungen
+    - O MVC-Pattern
+    - O Tests
+    - O Automaten
+    - O Regulaere Ausdruecke
+    - O Funktionale Programmierung in Python
+    - O Standart Algorithmen
+        - O Suchalgorithmen
+        - O Sortieralgorithmen
+        - O Graphen
+    - O Kommunikation
+        - O RS-232 Schnittstelle
+        - O Fehlererkennung
+    - O Kryptologie
+        - O Langzeit Projekt: Cryptool
 
 
     

@@ -41,6 +41,23 @@ class Student(Person):
     def say_goodbye(self):
         print(f'After {self.year} years in school, {self.first_name} says goodbye')
 
+class Teacher(Person):
+    """
+    Die "Teacher"-Klasse hat ein privates Attribut, auf welches man von außen nicht darauf zugreifen soll/können soll.
+    Die "subjects" sind dieses private Arrtibut. um es als solchen zu kennzeichen wird es mit einem doppelten "_"
+    markiert. Es kann innerhalb der Klasse ganz normal aufgerufen werden und verwendet werden
+    """
+    def __init__(self,
+                 first_name:str,
+                 last_name:str,
+                 subject:str):
+
+        super().__init__(first_name, last_name)
+        self.__subject = subject
+
+    def greet_class(self):
+        print(f'{self.first_name} {self.last_name} greets the {self.__subject} class')
+
 # Person wird mithilfe des Klassennames erstellt
 person_1 = Person('Marcel', 'Schuetz')
 # Person gruesst Yuzo
@@ -55,3 +72,15 @@ student_1.greet_other_student('Luca')
 # "Person" erbt, da sie neu defeniert wird
 person_1.say_goodbye()
 student_1.say_goodbye()
+
+# Teacher Herr Haag wird erstellt
+teacher_1 = Teacher('Patrick', 'Haag', 'math')
+
+# Auf privates Attribut zugreifen
+try:
+    print(teacher_1.__subject)
+except AttributeError:
+    print('Kein passendes Attribut für Teacher.__subject gefunden')
+
+# Die Klasse kann aber auf private Atttribute zugreiffen
+teacher_1.greet_class()

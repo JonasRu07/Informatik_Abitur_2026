@@ -138,4 +138,6 @@ print('Gesamt Augenzahl von player_2', player_2.total_eyes)
 player_1.throw_dices()
 
 print('Gesamt Augenzahl von player_1', player_1.total_eyes)
+print('Möglicher Fehler:')
 print('Gesamt Augenzahl von player_2', player_2.total_eyes)
+print(f'Sollte {player_2.dice_1.eyes + player_2.dice_2.eyes} sein')

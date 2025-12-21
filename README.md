@@ -18,7 +18,7 @@ In diesem Repository befinden sich die Themen, welche wir bis zum Abitur 2026 in
 - [ ] Regulaere Ausdruecke
 - [ ] Funktionale Programmierung in Python
 - [ ] Standart Algorithmen
-    - [ ] Suchalgorithmen
+    - [X] Suchalgorithmen
     - [ ] Sortieralgorithmen
     - [ ] Graphen
 - [ ] Kommunikation

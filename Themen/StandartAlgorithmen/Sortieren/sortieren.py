@@ -1,5 +1,5 @@
-from random import shuffle
-
+from random import shuffle, seed
+seed(0)
 
 def selection_sort(array:list[int]):
     """
@@ -38,14 +38,36 @@ def bubble_sort(array:list[int]):
         for j in range(0, len(array)-i-1):
             if array[j] > array[j+1]:
                 array[j+1], array[j] = array[j],array[j+1]
+                
+def quick_sort(array:list[int]):
+    if len(array) <= 1:
+        return array
+    pivot = array[int(len(array)/2)]
+    
+    links = []
+    pivots = []
+    rechts = []
+    for wert in array:
+        if wert < pivot:
+            links.append(wert)
+        elif wert == pivot:
+            pivots.append(wert)
+        else:
+            rechts.append(wert)
+    return quick_sort(links) + pivots + quick_sort(rechts)
         
+      
+        
+
 for i in range(100,5100, 100):
     array = list(range(i))
     array_unsorted = array.copy()
     shuffle(array_unsorted)
     # selection_sort(array_unsorted)
     # array_unsorted = insertion_sort(array_unsorted)
-    bubble_sort(array_unsorted)
+    # bubble_sort(array_unsorted)
+    array_unsorted = quick_sort(array_unsorted)
+        
     if array_unsorted == array:
         print(f"{i:3} Iteration hat funktioniert")
     

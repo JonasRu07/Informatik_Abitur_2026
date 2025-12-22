@@ -31,13 +31,21 @@ def insertion_sort(array:list[int]):
             if array[i] < array[j]:
                 array = array[:j] + [array[i]] + array[j:i] + array[i+1:]
     return array
+
+def bubble_sort(array:list[int]):
+    for i in range(len(array)):
+        # Subtraktion von i, da immer i-Elemente hinten schon sortiert sind
+        for j in range(0, len(array)-i-1):
+            if array[j] > array[j+1]:
+                array[j+1], array[j] = array[j],array[j+1]
         
 for i in range(100,5100, 100):
     array = list(range(i))
     array_unsorted = array.copy()
     shuffle(array_unsorted)
     # selection_sort(array_unsorted)
-    array_unsorted = insertion_sort(array_unsorted)
+    # array_unsorted = insertion_sort(array_unsorted)
+    bubble_sort(array_unsorted)
     if array_unsorted == array:
         print(f"{i:3} Iteration hat funktioniert")
     

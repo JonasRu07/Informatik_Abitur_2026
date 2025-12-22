@@ -19,7 +19,7 @@ In diesem Repository befinden sich die Themen, welche wir bis zum Abitur 2026 in
 - [ ] Funktionale Programmierung in Python
 - [ ] Standart Algorithmen
     - [X] Suchalgorithmen
-    - [ ] Sortieralgorithmen
+    - [X] Sortieralgorithmen
     - [ ] Graphen
 - [ ] Kommunikation
     - [ ] RS-232 Schnittstelle

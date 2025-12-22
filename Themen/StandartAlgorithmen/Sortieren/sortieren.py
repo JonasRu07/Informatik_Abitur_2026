@@ -35,13 +35,12 @@ def insertion_sort(array:list[int]):
         array (list[int]): Liste mit zu sortierenden Zahlen.
 
     Returns:
-        list[int]: Sortierte Liste
+        None : Sortiervorgang finded "in place" statt.
     """
     for i in range(len(array)):
         for j in range(i):
             if array[i] < array[j]:
-                array = array[:j] + [array[i]] + array[j:i] + array[i+1:]
-    return array
+                array.insert(j, array.pop(i))
 
 def bubble_sort(array:list[int]):
     """
@@ -99,11 +98,10 @@ for i in range(100,5100, 100):
     array_unsorted = array.copy()
     shuffle(array_unsorted)
     # selection_sort(array_unsorted)
-    # array_unsorted = insertion_sort(array_unsorted)
+    insertion_sort(array_unsorted)
     # bubble_sort(array_unsorted)
-    array_unsorted = quick_sort(array_unsorted)
+    # array_unsorted = quick_sort(array_unsorted)
         
     if array_unsorted == array:
         print(f"{i:3} Iteration hat funktioniert")
-    
     

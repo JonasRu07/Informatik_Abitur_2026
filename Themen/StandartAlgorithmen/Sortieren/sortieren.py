@@ -25,11 +25,19 @@ def selection_sort(array:list[int]):
         # Wechseln der Grenze mit dem kleinsten Wert
         array[i], array[min_idx] = array[min_idx], array[i]
         
-for i in range(0,5000, 100):
+def insertion_sort(array:list[int]):
+    for i in range(len(array)):
+        for j in range(i):
+            if array[i] < array[j]:
+                array = array[:j] + [array[i]] + array[j:i] + array[i+1:]
+    return array
+        
+for i in range(100,5100, 100):
     array = list(range(i))
     array_unsorted = array.copy()
     shuffle(array_unsorted)
-    selection_sort(array_unsorted)
+    # selection_sort(array_unsorted)
+    array_unsorted = insertion_sort(array_unsorted)
     if array_unsorted == array:
         print(f"{i:3} Iteration hat funktioniert")
     

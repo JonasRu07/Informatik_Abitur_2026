@@ -26,6 +26,17 @@ def selection_sort(array:list[int]):
         array[i], array[min_idx] = array[min_idx], array[i]
         
 def insertion_sort(array:list[int]):
+    """
+    Insertion Sort
+    Der Array wird sortiert. Dabei wird immer das erste unsortierte 
+    Element in einen bereits sortierten Teilbereich einsortiert.
+
+    Args:
+        array (list[int]): Liste mit zu sortierenden Zahlen.
+
+    Returns:
+        list[int]: Sortierte Liste
+    """
     for i in range(len(array)):
         for j in range(i):
             if array[i] < array[j]:
@@ -33,6 +44,18 @@ def insertion_sort(array:list[int]):
     return array
 
 def bubble_sort(array:list[int]):
+    """
+    Bubble Sort
+    Der Array wird sortiert. Dabei wird immer zwei Elemente miteinander 
+    verglichen und sortiert. So "wandern" die groessten Werte nach rechts 
+    und kleine nach links.
+
+    Args:
+        array (list[int]): Liste mit zu sortierenden Zahlen.
+
+    Returns:
+        None : Sortiervorgang finded "in place" statt.
+    """
     for i in range(len(array)):
         # Subtraktion von i, da immer i-Elemente hinten schon sortiert sind
         for j in range(0, len(array)-i-1):
@@ -40,6 +63,19 @@ def bubble_sort(array:list[int]):
                 array[j+1], array[j] = array[j],array[j+1]
                 
 def quick_sort(array:list[int]):
+    """
+    Quick Sort.
+    Es wird ein Pivot Element ausgesucht. Alle anderen werden nun in zwei
+    Listen einsortiert, jenachdem ob sie groesser oder kleiner sind als 
+    das Pivotelement.
+    Diese Listen werden dann rekursiv sortiert.
+    
+    Args:
+        array (list[int]): Liste mit zu sortierenden Zahlen.
+
+    Returns:
+        list[int]: Sortierte Liste
+    """
     if len(array) <= 1:
         return array
     pivot = array[int(len(array)/2)]
@@ -56,9 +92,8 @@ def quick_sort(array:list[int]):
             rechts.append(wert)
     return quick_sort(links) + pivots + quick_sort(rechts)
         
-      
-        
 
+# Demo
 for i in range(100,5100, 100):
     array = list(range(i))
     array_unsorted = array.copy()

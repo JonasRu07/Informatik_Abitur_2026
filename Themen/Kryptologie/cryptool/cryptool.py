@@ -4,7 +4,7 @@ from string import ascii_uppercase
 from caeser import Ceaser
 from ersetzung import Ersetzung
 from vingiere import Vigniere
-
+from rsa import RSA
 seed(0)
 
 class Cryptool:
@@ -12,6 +12,7 @@ class Cryptool:
         self.ceaser = Ceaser(alpha)
         self.ersetzung = Ersetzung(alpha)
         self.vigniere = Vigniere(alpha)
+        self.rsa = RSA()
         
         
 if __name__ == "__main__":
@@ -33,4 +34,8 @@ if __name__ == "__main__":
     print(tool.vigniere.encode("ASTRIX IST TOLL", "INFOKURS"))
     print(tool.vigniere.decode("IFYFSR AAG HYFC", "INFOKURS"))
     print(tool.vigniere.decode(tool.vigniere.encode(rnd, "INFOKURS"), "INFOKURS") == rnd)
+    print()
+    print(tool.rsa.encode("ASTERIX IST TOLL", (17, 3233)))
+    print(tool.rsa.decode([2790, 2680, 2159, 28, 1859, 1486, 1345, 1992, 1486, 2680, 2159, 1992, 2159, 1307, 2726, 2726], (2753, 3233)))
+    print(tool.rsa.decode(tool.rsa.encode(rnd, (17, 3233)), (2753, 3233)) == rnd)
     

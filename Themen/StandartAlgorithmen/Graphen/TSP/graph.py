@@ -137,33 +137,50 @@ class Graph:
                 rest.remove(min_edge.ziel)
                 laenge += min_edge.gewicht
         weg.append(weg[0])
-        laenge += self.get_edge(weg[-1].name, weg[0].name).gewicht
+        edge = self.get_edge(weg[-1].name, weg[0].name)
+        if edge is None: raise RuntimeError
+        laenge += edge.gewicht
         return weg, laenge
         
     def entfernteste_node(self):
+        def get_weg_laenge(weg:list[Node]) -> int|float:
+            laenge = 0
+            for idx_node in range(len(weg)-1):
+                start_node = weg[idx_node]
+                ziel_node = weg[idx_node+1]
+                edge = self.get_edge(start_node.name, ziel_node.name)
+                if edge is None: continue
+                laenge += edge.gewicht
+            return laenge
+        
         rest = self.nodes.copy()
         weg = [rest.pop(0)]*2
         
-        for i in range(len(rest)):
-            max_distanz, max_node = float("inf"), None
+        while len(rest) != 0:
+            max_distanz, max_node = float("-inf"), None
             # Entfernteste Node finden
             for ziel_node in rest:
+                # Erster Knoten ueberspringen, da erster == letzter
                 for start_node in weg[1:]:
                     edge = self.get_edge(start_node.name, ziel_node.name)
                     if edge is None: continue
                     if edge.gewicht > max_distanz:
                         max_distanz = edge.gewicht
                         max_node = ziel_node
-            # Node einfuegen
+                        
             if max_node is None: continue
+            rest.remove(max_node)
+                    
+            # Node einfuegen
+            
             min_distanz, min_weg = float("inf"), []
-            for j in range(len(weg)-1):
+            for j in range(1,len(weg)):
                 tmp_weg = weg[:j] + [max_node] + weg[j:]
-                if sum([self.get_edge(tmp_weg[k].name, tmp_weg[k%len(tmp_weg)].name).gewicht for k in range(len(tmp_weg))]) < min_distanz:
-                    min_distanz = sum([self.get_edge(tmp_weg[k].name, tmp_weg[k%len(tmp_weg)].name).gewicht for k in range(len(tmp_weg))])
+                if get_weg_laenge(tmp_weg) < min_distanz:
+                    min_distanz = get_weg_laenge(tmp_weg)
                     min_weg = tmp_weg
             weg = min_weg
-        return weg, sum([self.get_edge(weg[k].name, weg[k%len(weg)].name).gewicht for k in range(len(weg))])
+        return weg, get_weg_laenge(weg)
         
     def load_adj_matrix(self, names:list[str], matrix:list[list[int]]):
         for name in names:
@@ -192,10 +209,11 @@ def main():
     
     G.load_adj_matrix(namen, M)
     
-    # print(G)
+    print(G)
     
     print(G.rekursive_loesung())
     print(G.naechste_Node())
+    print(G.entfernteste_node())
     
     
     
